@@ -20,15 +20,16 @@ interface Window {
 declare let window: Window
 
 const E = MindElixir.E
+
 const options: Options = {
   el: '#map',
   newTopicName: '子节点',
-  direction: MindElixir.SIDE,
-  // direction: MindElixir.RIGHT,
-  locale: 'en',
+  direction: MindElixir.RIGHT,
+  // direction: MindElixir.SIDE,
+  locale: 'zh_CN',
   // mouseSelectionButton: 2,
-  draggable: true,
-  editable: true,
+  draggable: false,
+  editable: false,
   // if you set contextMenu to false, you should handle contextmenu event by yourself, e.g. preventDefault
   contextMenu: true,
   contextMenuOption: {
@@ -43,10 +44,10 @@ const options: Options = {
       },
     ],
   },
-  toolBar: true,
-  nodeMenu: true,
-  keypress: true,
-  allowUndo: true,
+  toolBar: false,
+  nodeMenu: false,
+  keypress: false,
+  allowUndo: false,
   before: {
     insertSibling(el, obj) {
       console.log('insertSibling', el, obj)
@@ -65,13 +66,13 @@ let mind = new MindElixir(options)
 const data = MindElixir.new('new topic')
 mind.init(example)
 
-const m2 = new MindElixir({
+/* const m2 = new MindElixir({
   el: '#map2',
   selectionContainer: 'body', // use body to make selection usable when transform is not 0
   direction: MindElixir.SIDE,
   theme: MindElixir.DARK_THEME,
 })
-m2.init(data)
+m2.init(data) */
 
 function sleep() {
   return new Promise<void>(res => {

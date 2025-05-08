@@ -16,12 +16,12 @@ const aboutMindElixir: MindElixirData = {
           {
             id: 'use-image',
             topic: 'mind-elixir',
-            image: {
+            /* image: {
               url: 'https://raw.githubusercontent.com/ssshooter/mind-elixir-core/master/images/logo2.png',
               height: 100,
               width: 90,
               fit: 'contain',
-            },
+            }, */
           },
         ],
       },
@@ -317,7 +317,7 @@ const aboutMindElixir: MindElixirData = {
               },
             ],
           },
-          {
+          /* {
             topic: 'Video',
             id: 'c00a2264ffadw19',
             children: [
@@ -328,7 +328,7 @@ const aboutMindElixir: MindElixirData = {
                   '<iframe src="//player.bilibili.com/player.html?bvid=BV1aTxMehEjK&poster=1&autoplay=0&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>',
               },
             ],
-          },
+          }, */
         ],
         direction: 1,
       },
@@ -412,7 +412,7 @@ const aboutMindElixir: MindElixirData = {
       text: 'summary',
     },
   ],
-  direction: 2,
+  // direction: 2,
   theme: {
     name: 'Latte',
     palette: ['#dd7878', '#ea76cb', '#8839ef', '#e64553', '#fe640b', '#df8e1d', '#40a02b', '#209fb5', '#1e66f5', '#7287fd'],
