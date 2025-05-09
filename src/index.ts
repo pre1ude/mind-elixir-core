@@ -1,6 +1,6 @@
 import './index.less'
 import './iconfont/iconfont.js'
-import { LEFT, RIGHT, SIDE, DARK_THEME, THEME } from './const'
+import { LEFT, RIGHT, SIDE, DARK_THEME, THEME, MouseButton } from './const'
 import { generateUUID } from './utils/index'
 import initMouseEvent from './mouse'
 import Bus from './utils/pubsub'
@@ -59,7 +59,8 @@ function MindElixir(
   this.contextMenu = contextMenu === undefined ? true : contextMenu
   this.toolBar = toolBar === undefined ? true : toolBar
   this.keypress = keypress === undefined ? true : keypress
-  this.mouseSelectionButton = mouseSelectionButton || 0
+  this.mouseSelectionButton = mouseSelectionButton ?? MouseButton.RIGHT
+  this.mouseMoveButton = this.mouseSelectionButton === MouseButton.LEFT ? MouseButton.RIGHT : MouseButton.LEFT
   // record the direction before enter focus mode, must true in focus mode, reset to null after exit focus
   this.direction = typeof direction === 'number' ? direction : 1
   this.draggable = draggable === undefined ? true : draggable

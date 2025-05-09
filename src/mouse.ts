@@ -63,21 +63,18 @@ export default function (mind: MindElixirInstance) {
     }
   })
   mind.map.addEventListener('mousedown', e => {
-    const mouseMoveButton = mind.mouseSelectionButton === 0 ? 2 : 0
-    if (e.button !== mouseMoveButton) return
+    if (e.button !== mind.mouseMoveButton) return
     if ((e.target as HTMLElement).contentEditable === 'inherit') {
       dragMoveHelper.moved = false
       dragMoveHelper.mousedown = true
     }
   })
   mind.map.addEventListener('mouseleave', e => {
-    const mouseMoveButton = mind.mouseSelectionButton === 0 ? 2 : 0
-    if (e.button !== mouseMoveButton) return
+    if (e.button !== mind.mouseMoveButton) return
     dragMoveHelper.clear()
   })
   mind.map.addEventListener('mouseup', e => {
-    const mouseMoveButton = mind.mouseSelectionButton === 0 ? 2 : 0
-    if (e.button !== mouseMoveButton) return
+    if (e.button !== mind.mouseMoveButton) return
     dragMoveHelper.clear()
   })
 }

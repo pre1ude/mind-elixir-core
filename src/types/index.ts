@@ -9,6 +9,7 @@ import type SelectionArea from '@viselect/vanilla'
 import type { MainLineParams, SubLineParams } from '../utils/generateBranch'
 import type { Locale } from '../i18n'
 import type { ContextMenuOption } from '../plugin/contextMenu'
+import type { MouseButton } from '../const'
 export { type MindElixirMethods } from '../methods'
 
 export enum DirectionClass {
@@ -89,7 +90,8 @@ export interface MindElixirInstance extends MindElixirMethods {
   contextMenuOption?: ContextMenuOption
   toolBar: boolean
   keypress: boolean
-  mouseSelectionButton: 0 | 2
+  mouseSelectionButton: MouseButton
+  mouseMoveButton: MouseButton
   before: Before
   newTopicName: string
   allowUndo: boolean
@@ -144,7 +146,7 @@ export type Options = {
   contextMenuOption?: ContextMenuOption
   toolBar?: boolean
   keypress?: boolean
-  mouseSelectionButton?: 0 | 2
+  mouseSelectionButton?: MouseButton
   before?: Before
   newTopicName?: string
   allowUndo?: boolean

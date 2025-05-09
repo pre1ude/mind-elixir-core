@@ -1,16 +1,14 @@
-import type { Trigger } from '@viselect/vanilla'
 import SelectionArea from '@viselect/vanilla'
 import type { MindElixirInstance, Topic } from '..'
 import dragMoveHelper from '../utils/dragMoveHelper'
 
 export default function (mei: MindElixirInstance) {
-  const triggers: Trigger[] = mei.mouseSelectionButton === 2 ? [2] : [0]
   const selection = new SelectionArea({
     selectables: ['.map-container me-tpc'],
     boundaries: [mei.container],
     container: mei.selectionContainer,
     behaviour: {
-      triggers,
+      triggers: [mei.mouseSelectionButton],
       // Scroll configuration.
       scrolling: {
         // On scrollable areas the number on px per frame is devided by this amount.
