@@ -194,6 +194,28 @@ export const toCenter = function (this: MindElixirInstance) {
 /**
  * @function
  * @instance
+ * @name toLeftCenter
+ * @description Reset position of the map to center.
+ * @memberof MapInteraction
+ */
+export const toLeftCenter = function (this: MindElixirInstance) {
+  this.container.scrollTo(10000 - 120, 10000 - this.container.offsetHeight / 2)
+}
+
+/**
+ * @function
+ * @instance
+ * @name toLeftCenter
+ * @description Reset position of the map to center.
+ * @memberof MapInteraction
+ */
+export const toRightCenter = function (this: MindElixirInstance) {
+  this.container.scrollTo(10000 + 120 - this.container.offsetWidth, 10000 - this.container.offsetHeight / 2)
+}
+
+/**
+ * @function
+ * @instance
  * @name install
  * @description Install plugin.
  * @memberof MapInteraction
@@ -248,6 +270,7 @@ export const cancelFocus = function (this: MindElixirInstance) {
  */
 export const initLeft = function (this: MindElixirInstance) {
   this.direction = 0
+  this.toRightCenter()
   this.refresh()
 }
 /**
@@ -259,6 +282,7 @@ export const initLeft = function (this: MindElixirInstance) {
  */
 export const initRight = function (this: MindElixirInstance) {
   this.direction = 1
+  this.toLeftCenter()
   this.refresh()
 }
 /**
@@ -270,6 +294,7 @@ export const initRight = function (this: MindElixirInstance) {
  */
 export const initSide = function (this: MindElixirInstance) {
   this.direction = 2
+  this.toCenter()
   this.refresh()
 }
 

@@ -15,6 +15,7 @@ import * as nodeOperation from './nodeOperation'
 import * as arrow from './arrow'
 import * as summary from './summary'
 import * as exportImage from './plugin/exportImage'
+import { LEFT, RIGHT } from './const'
 
 export type OperationMap = typeof nodeOperation
 export type Operations = keyof OperationMap
@@ -95,7 +96,15 @@ const methods = {
       this.draggable && nodeDraggable(this)
       this.allowUndo && operationHistory(this)
     }
-    this.toCenter()
+
+    if (this.direction === RIGHT) {
+      this.toLeftCenter()
+    } else if (this.direction === LEFT) {
+      this.toRightCenter()
+    } else {
+      this.toCenter()
+    }
+
     this.layout()
     this.linkDiv()
   },
