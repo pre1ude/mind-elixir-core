@@ -229,7 +229,7 @@ const aboutMindElixir: MindElixirData = {
             topic: 'Add icons',
             id: 'bd1d0317f7e8a61a',
             icons: ['😂'],
-            tags: ['www'],
+            tags: ['www', 'new'],
           },
           {
             topic: 'Bolder',
