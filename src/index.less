@@ -116,7 +116,7 @@
       border-radius: 3px;
       color: var(--color);
       pointer-events: all;
-      max-width: 35em;
+      max-width: 20em;
       white-space: pre-wrap;
       padding: var(--topic-padding);
 
@@ -220,7 +220,7 @@
     top: 0;
     left: 0;
     width: max-content; // let words expand the div and keep max length at the same time
-    max-width: 35em;
+    max-width: 20em;
     z-index: 11;
     direction: ltr;
     user-select: auto;
@@ -244,6 +244,10 @@
     }
     & > .text {
       display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
   .circle {

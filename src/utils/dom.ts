@@ -48,6 +48,7 @@ export const shapeTpc = function (tpc: Topic, nodeObj: NodeObj) {
   {
     const textEl = $d.createElement('span')
     textEl.className = 'text'
+    tpc.setAttribute('title', nodeObj.topic)
     textEl.textContent = nodeObj.topic
     tpc.appendChild(textEl)
     tpc.text = textEl
