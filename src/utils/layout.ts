@@ -1,4 +1,4 @@
-import { LEFT, RIGHT, SIDE } from '../const'
+import { Direction } from '../const'
 import type { Children } from '../types/dom'
 import { DirectionClass, type MindElixirInstance, type NodeObj } from '../types/index'
 import { shapeTpc } from './dom'
@@ -17,21 +17,21 @@ export const layout = function (this: MindElixirInstance) {
   root.appendChild(tpc)
 
   const mainNodes = this.nodeData.children || []
-  if (this.direction === SIDE) {
+  if (this.direction === Direction.SIDE) {
     // initiate direction of main nodes
     let lcount = 0
     let rcount = 0
     mainNodes.map(node => {
-      if (node.direction === LEFT) {
+      if (node.direction === Direction.LEFT) {
         lcount += 1
-      } else if (node.direction === RIGHT) {
+      } else if (node.direction === Direction.RIGHT) {
         rcount += 1
       } else {
         if (lcount <= rcount) {
-          node.direction = LEFT
+          node.direction = Direction.LEFT
           lcount += 1
         } else {
-          node.direction = RIGHT
+          node.direction = Direction.RIGHT
           rcount += 1
         }
       }
@@ -49,13 +49,13 @@ const layoutMainNode = function (mei: MindElixirInstance, data: NodeObj[], root:
   for (let i = 0; i < data.length; i++) {
     const nodeObj = data[i]
     const { grp: w } = mei.createWrapper(nodeObj)
-    if (mei.direction === SIDE) {
-      if (nodeObj.direction === LEFT) {
+    if (mei.direction === Direction.SIDE) {
+      if (nodeObj.direction === Direction.LEFT) {
         leftPart.appendChild(w)
       } else {
         rightPart.appendChild(w)
       }
-    } else if (mei.direction === LEFT) {
+    } else if (mei.direction === Direction.LEFT) {
       leftPart.appendChild(w)
     } else {
       rightPart.appendChild(w)

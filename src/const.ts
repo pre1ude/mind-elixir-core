@@ -1,14 +1,16 @@
 import type { Theme } from '.'
 
-export const LEFT = 0
-export const RIGHT = 1
-export const SIDE = 2
+export const Direction = {
+  LEFT: 0,
+  RIGHT: 1,
+  SIDE: 2,
+} as const
+export type Direction = (typeof Direction)[keyof typeof Direction]
 
 export const MouseButton = {
   LEFT: 0,
   RIGHT: 2,
 } as const
-
 export type MouseButton = (typeof MouseButton)[keyof typeof MouseButton]
 
 export const THEME: Theme = {

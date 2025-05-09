@@ -1,6 +1,6 @@
 import './index.less'
 import './iconfont/iconfont.js'
-import { LEFT, RIGHT, SIDE, DARK_THEME, THEME, MouseButton } from './const'
+import { Direction, DARK_THEME, THEME, MouseButton } from './const'
 import { generateUUID } from './utils/index'
 import initMouseEvent from './mouse'
 import Bus from './utils/pubsub'
@@ -121,9 +121,9 @@ function MindElixir(
 
 MindElixir.prototype = methods
 
-MindElixir.LEFT = LEFT
-MindElixir.RIGHT = RIGHT
-MindElixir.SIDE = SIDE
+MindElixir.LEFT = Direction.LEFT
+MindElixir.RIGHT = Direction.RIGHT
+MindElixir.SIDE = Direction.SIDE
 
 MindElixir.THEME = THEME
 MindElixir.DARK_THEME = DARK_THEME
@@ -168,9 +168,9 @@ export interface MindElixirCtor {
   E: typeof findEle
   new: typeof MindElixir.new
   version: string
-  LEFT: typeof LEFT
-  RIGHT: typeof RIGHT
-  SIDE: typeof SIDE
+  LEFT: typeof Direction.LEFT
+  RIGHT: typeof Direction.RIGHT
+  SIDE: typeof Direction.SIDE
   THEME: typeof THEME
   DARK_THEME: typeof DARK_THEME
   prototype: MindElixirMethods

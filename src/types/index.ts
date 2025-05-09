@@ -10,6 +10,7 @@ import type { MainLineParams, SubLineParams } from '../utils/generateBranch'
 import type { Locale } from '../i18n'
 import type { ContextMenuOption } from '../plugin/contextMenu'
 import type { MouseButton } from '../const'
+import type { Direction } from '../const'
 export { type MindElixirMethods } from '../methods'
 
 export enum DirectionClass {
@@ -161,9 +162,6 @@ export type Options = {
 
 export type Uid = string
 
-export type Left = 0
-export type Right = 1
-
 /**
  * MindElixir node object
  *
@@ -183,7 +181,7 @@ export interface NodeObj {
   icons?: string[]
   hyperLink?: string
   expanded?: boolean
-  direction?: Left | Right
+  direction?: typeof Direction.LEFT | typeof Direction.RIGHT
   image?: {
     url: string
     width: number

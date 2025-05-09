@@ -1,4 +1,4 @@
-import { LEFT } from '../const'
+import { Direction } from '../const'
 import type { Topic, Wrapper, Parent, Children, Expander } from '../types/dom'
 import type { MindElixirInstance, NodeObj } from '../types/index'
 import { encodeHTML } from '../utils/index'
@@ -154,7 +154,7 @@ export const editTopic = function (this: MindElixirInstance, el: Topic) {
   font:${style.font};
   background-color:${style.backgroundColor !== 'rgba(0, 0, 0, 0)' && style.backgroundColor};
   border-radius:${style.borderRadius};`
-  if (this.direction === LEFT) div.style.right = '0'
+  if (this.direction === Direction.LEFT) div.style.right = '0'
   div.focus()
 
   selectText(div)
