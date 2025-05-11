@@ -151,20 +151,30 @@
       position: absolute;
       height: 18px;
       width: 18px;
-      opacity: 0.8;
-      background-image: url('./icons/add-circle.svg');
+      // opacity: 0.8;
+      // background-image: url('./icons/add-circle.svg');
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
 
       pointer-events: all;
       z-index: 9;
+      text-align: center;
+      background-color: #4dc4ff;
+      color: #ffffff;
+      border-radius: 50px;
+      &::after {
+        content: attr(data-count);
+      }
       &.minus {
-        background-image: url('./icons/minus-circle.svg') !important;
+        // background-image: url('./icons/minus-circle.svg') !important;
         transition: opacity 0.3s;
         opacity: 0;
         &:hover {
-          opacity: 0.8;
+          opacity: 1;
+        }
+        &::after {
+          content: "❮";
         }
       }
     }

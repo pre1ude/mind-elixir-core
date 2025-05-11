@@ -93,7 +93,7 @@ export const createWrapper = function (this: MindElixirInstance, nodeObj: NodeOb
   const { p, tpc } = this.createParent(nodeObj)
   grp.appendChild(p)
   if (!omitChildren && nodeObj.children && nodeObj.children.length > 0) {
-    const expander = createExpander(nodeObj.expanded)
+    const expander = createExpander(nodeObj.expanded, nodeObj.children.length)
     p.appendChild(expander)
     // tpc.expander = expander
     if (nodeObj.expanded !== false) {
@@ -196,10 +196,16 @@ export const editTopic = function (this: MindElixirInstance, el: Topic) {
   console.timeEnd('editTopic')
 }
 
-export const createExpander = function (expanded: boolean | undefined): Expander {
+export const createExpander = function (expanded: boolean | undefined, childCount?: number): Expander {
   const expander = $d.createElement('me-epd') as Expander
   // if expanded is undefined, treat as expanded
   expander.expanded = expanded !== false
   expander.className = expanded !== false ? 'minus' : ''
+
+  // 添加子节点数量显示
+  if (childCount && childCount > 0) {
+    expander.setAttribute('data-count', childCount.toString())
+  }
+
   return expander
 }
