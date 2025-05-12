@@ -92,7 +92,7 @@ function MindElixir(
   const canvas = $d.createElement('div') // map-canvas Element
   canvas.className = 'map-canvas'
   this.map = canvas
-  this.map.setAttribute('tabindex', '0')
+  // this.map.setAttribute('tabindex', '0')
   this.map.style.transform = `translate(${this.translateVal.x}px, ${this.translateVal.y}px) scale(1)`
   this.container.appendChild(this.map)
   this.mindElixirBox.appendChild(this.container)
