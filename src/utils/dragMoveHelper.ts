@@ -5,7 +5,10 @@ export default {
   mousedown: false,
   onMove(e: MouseEvent, mind: MindElixirInstance) {
     if (this.mousedown) {
-      this.moved = true
+      // if > 2px, moved true
+      if (e.movementX * e.movementX + e.movementY * e.movementY >= 4) {
+        this.moved = true
+      }
       mind.translateVal.x = e.clientX - mind.startPoint.x
       mind.translateVal.y = e.clientY - mind.startPoint.y
       const { map, scaleVal } = mind
