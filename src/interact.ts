@@ -1,3 +1,4 @@
+import { Direction } from './const'
 import type { Locale } from './i18n'
 import { rmSubline } from './nodeOperation'
 import type { Topic, Wrapper } from './types/dom'
@@ -298,6 +299,30 @@ export const initSide = function (this: MindElixirInstance) {
   this.refresh()
 }
 
+export const initTranslate = function (this: MindElixirInstance) {
+  const root = this.map.querySelector('me-root') as HTMLElement
+  const pT = root.offsetTop
+  const pL = root.offsetLeft
+  const pW = root.offsetWidth
+  const pH = root.offsetHeight
+
+  const cw = this.container.offsetWidth
+  const ch = this.container.offsetHeight
+
+  if (this.direction === Direction.SIDE) {
+    this.translateVal.x = cw / 2 - (pL + pW / 2)
+    this.translateVal.y = ch / 2 - (pT + pH / 2)
+  } else if (this.direction === Direction.LEFT) {
+    this.translateVal.x = cw - (pL + pW) - 10
+    this.translateVal.y = ch / 2 - (pT + pH / 2)
+  } else if (this.direction === Direction.RIGHT) {
+    this.translateVal.x = 10 - pL
+    this.translateVal.y = ch / 2 - (pT + pH / 2)
+  }
+
+  this.map.style.transform = `translate(${this.translateVal.x}px, ${this.translateVal.y}px) scale(${this.scaleVal})`
+}
+
 /**
  * @function
  * @instance
@@ -340,13 +365,13 @@ export const expandNode = function (this: MindElixirInstance, el: Topic, isExpan
   this.linkDiv(el.closest('me-main > me-wrapper') as Wrapper)
 
   // scroll into view if the node is out of view
-  const elRect = el.getBoundingClientRect()
+  /* const elRect = el.getBoundingClientRect()
   const containerRect = this.container.getBoundingClientRect()
   const isOutOfView =
     elRect.bottom > containerRect.bottom || elRect.top < containerRect.top || elRect.right > containerRect.right || elRect.left < containerRect.left
   if (isOutOfView) {
     el.scrollIntoView({ block: 'center', inline: 'center' })
-  }
+  } */
 
   this.bus.fire('expandNode', node)
 }
@@ -371,4 +396,5 @@ export const refresh = function (this: MindElixirInstance, data?: MindElixirData
   this.layout()
   // generate links between nodes
   this.linkDiv()
+  this.initTranslate()
 }

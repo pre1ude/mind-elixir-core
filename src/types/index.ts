@@ -64,6 +64,8 @@ export type Alignment = 'root' | 'nodes'
  * @public
  */
 export interface MindElixirInstance extends MindElixirMethods {
+  startPoint: { x: number; y: number }
+  translateVal: { x: number; y: number }
   disposable: Array<() => void>
   isFocusMode: boolean
   nodeDataBackup: NodeObj

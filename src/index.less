@@ -25,7 +25,8 @@
   user-select: none;
   height: 100%;
   width: 100%;
-  overflow: scroll;
+  background-color: var(--bgcolor);
+  overflow: hidden;
   font-size: 15px;
   * {
     box-sizing: border-box; // must have, to make getComputedStyle work right
@@ -47,15 +48,20 @@
     me-tpc {
       direction: ltr;
     }
+    .tags {
+      direction: rtl;
+      transform: translate(-100%, 0);
+    }
   }
   .map-canvas {
     height: 20000px;
     width: 20000px;
     position: relative;
     user-select: none;
-    transition: transform 0.3s;
-    transform: scale(1);
-    background-color: var(--bgcolor);
+    transform-origin: 0 0;
+    // transition: transform 0.3s;
+    // transform: scale(1);
+    // background-color: var(--bgcolor);
     me-nodes {
       position: absolute;
       display: flex;
@@ -279,7 +285,7 @@
     direction: ltr;
     position: absolute;
     top: -5px;
-    right: 0;
+    inset-inline-end: 0;
     z-index: 10;
     display: flex;
     flex-wrap: wrap;
@@ -329,5 +335,8 @@
   .selection-area {
     background: #4f90f22d;
     border: 1px solid #4f90f2;
+  }
+  .main-node-container {
+    // background-color: ghostwhite;
   }
 }

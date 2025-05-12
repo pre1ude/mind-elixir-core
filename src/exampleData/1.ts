@@ -5,7 +5,7 @@ const aboutMindElixir: MindElixirData = {
   nodeData: {
     id: 'me-root',
     topic: 'Mind Elixir',
-    tags: ['Mind Map Core'],
+    // tags: ['Mind Map Core'],
     children: [
       {
         topic: 'logo2',
@@ -13,16 +13,16 @@ const aboutMindElixir: MindElixirData = {
         direction: 0,
         expanded: true,
         children: [
-          {
+          /* {
             id: 'use-image',
             topic: 'mind-elixir',
-            /* image: {
+            image: {
               url: 'https://raw.githubusercontent.com/ssshooter/mind-elixir-core/master/images/logo2.png',
               height: 100,
               width: 90,
               fit: 'contain',
-            }, */
-          },
+            },
+          }, */
         ],
       },
       {

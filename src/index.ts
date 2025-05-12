@@ -70,6 +70,8 @@ function MindElixir(
   // this.parentMap = {} // deal with large amount of nodes
   this.currentNode = null // the selected <tpc/> element
   this.currentArrow = null // the selected link svg element
+  this.startPoint = { x: 0, y: 0 }
+  this.translateVal = { x: 0, y: 0 }
   this.scaleVal = 1
   this.tempDirection = null
   this.generateMainBranch = generateMainBranch || main
@@ -91,6 +93,7 @@ function MindElixir(
   canvas.className = 'map-canvas'
   this.map = canvas
   this.map.setAttribute('tabindex', '0')
+  this.map.style.transform = `translate(${this.translateVal.x}px, ${this.translateVal.y}px) scale(1)`
   this.container.appendChild(this.map)
   this.mindElixirBox.appendChild(this.container)
 
