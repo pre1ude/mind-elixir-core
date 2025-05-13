@@ -26,7 +26,7 @@
   height: 100%;
   width: 100%;
   background-color: var(--bgcolor);
-  overflow: hidden;
+  overflow: scroll;
   font-size: 15px;
   * {
     box-sizing: border-box; // must have, to make getComputedStyle work right
@@ -58,7 +58,7 @@
     width: 20000px;
     position: relative;
     user-select: none;
-    transform-origin: 0 0;
+    // transform-origin: 0 0;
     // transition: transform 0.3s;
     // transform: scale(1);
     // background-color: var(--bgcolor);
@@ -335,8 +335,5 @@
   .selection-area {
     background: #4f90f22d;
     border: 1px solid #4f90f2;
-  }
-  .main-node-container {
-    // background-color: ghostwhite;
   }
 }

@@ -15,6 +15,7 @@ import * as nodeOperation from './nodeOperation'
 import * as arrow from './arrow'
 import * as summary from './summary'
 import * as exportImage from './plugin/exportImage'
+import { Direction } from './const'
 
 export type OperationMap = typeof nodeOperation
 export type Operations = keyof OperationMap
@@ -96,9 +97,16 @@ const methods = {
       this.allowUndo && operationHistory(this)
     }
 
+    if (this.direction === Direction.RIGHT) {
+      this.toLeftCenter()
+    } else if (this.direction === Direction.LEFT) {
+      this.toRightCenter()
+    } else {
+      this.toCenter()
+    }
+
     this.layout()
     this.linkDiv()
-    this.initTranslate()
   },
   destroy(this: Partial<MindElixirInstance>) {
     this.disposable!.forEach(fn => fn())

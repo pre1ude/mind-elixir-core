@@ -67,10 +67,6 @@ export default function (mind: MindElixirInstance) {
     if ((e.target as HTMLElement).contentEditable === 'inherit') {
       dragMoveHelper.moved = false
       dragMoveHelper.mousedown = true
-      mind.startPoint = {
-        x: e.clientX - mind.translateVal.x,
-        y: e.clientY - mind.translateVal.y,
-      }
     }
   })
   mind.map.addEventListener('mouseleave', e => {
@@ -80,33 +76,5 @@ export default function (mind: MindElixirInstance) {
   mind.map.addEventListener('mouseup', e => {
     if (e.button !== mind.mouseMoveButton) return
     dragMoveHelper.clear()
-  })
-  mind.container.addEventListener('wheel', (e: WheelEvent) => {
-    console.log('zoom', e)
-    e.preventDefault()
-
-    let scale = mind.scaleVal
-    const translate = mind.translateVal
-
-    const containerRect = mind.container.getBoundingClientRect()
-    const x = e.clientX - containerRect.left
-    const y = e.clientY - containerRect.top
-
-    if (x < 0 || x > containerRect.width || y < 0 || y > containerRect.height) return
-
-    const xs = (x - translate.x) / scale
-    const ys = (y - translate.y) / scale
-
-    e.deltaY < 0 ? (scale *= 1.2) : (scale /= 1.2)
-    if (scale > 1.6 || scale < 0.6) return
-    mind.scaleVal = scale
-    mind.translateVal = {
-      x: x - xs * scale,
-      y: y - ys * scale,
-    }
-
-    mind.map.style.transform = `translate(${mind.translateVal.x}px, ${mind.translateVal.y}px) scale(${mind.scaleVal})`
-
-    e.stopPropagation()
   })
 }

@@ -9,11 +9,18 @@ export default {
       if (e.movementX * e.movementX + e.movementY * e.movementY >= 4) {
         this.moved = true
       }
-      mind.translateVal.x = e.clientX - mind.startPoint.x
-      mind.translateVal.y = e.clientY - mind.startPoint.y
-      const { map, scaleVal } = mind
-
-      map.style.transform = `translate(${mind.translateVal.x}px, ${mind.translateVal.y}px) scale(${scaleVal})`
+      const deltaX = e.movementX
+      const deltaY = e.movementY
+      const { container, map, scaleVal } = mind
+      let scrollLeft = container.scrollLeft - deltaX
+      let scrollTop = container.scrollTop - deltaY
+      if (scaleVal < 1) {
+        const minScrollLeft = (container.scrollWidth - map.clientWidth * scaleVal) / 2
+        const minScrollTop = (container.scrollHeight - map.clientHeight * scaleVal) / 2
+        scrollLeft = Math.max(minScrollLeft, Math.min(container.scrollWidth - minScrollLeft - container.clientWidth, scrollLeft))
+        scrollTop = Math.max(minScrollTop, Math.min(container.scrollHeight - minScrollTop - container.clientHeight, scrollTop))
+      }
+      container.scrollTo(scrollLeft, scrollTop)
     }
   },
   clear() {
