@@ -44,7 +44,7 @@ const options: Options = {
       },
     ],
   },
-  toolBar: false,
+  toolBar: true,
   nodeMenu: false,
   keypress: false,
   allowUndo: false,

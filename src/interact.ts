@@ -1,3 +1,4 @@
+import { Direction } from './const'
 import type { Locale } from './i18n'
 import { rmSubline } from './nodeOperation'
 import type { Topic, Wrapper } from './types/dom'
@@ -296,6 +297,16 @@ export const initSide = function (this: MindElixirInstance) {
   this.direction = 2
   this.toCenter()
   this.refresh()
+}
+
+export const rePosition = function (this: MindElixirInstance) {
+  if (this.direction === Direction.RIGHT) {
+    this.toLeftCenter()
+  } else if (this.direction === Direction.LEFT) {
+    this.toRightCenter()
+  } else {
+    this.toCenter()
+  }
 }
 
 /**

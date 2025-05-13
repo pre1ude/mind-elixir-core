@@ -97,13 +97,7 @@ const methods = {
       this.allowUndo && operationHistory(this)
     }
 
-    if (this.direction === Direction.RIGHT) {
-      this.toLeftCenter()
-    } else if (this.direction === Direction.LEFT) {
-      this.toRightCenter()
-    } else {
-      this.toCenter()
-    }
+    this.rePosition()
 
     this.layout()
     this.linkDiv()

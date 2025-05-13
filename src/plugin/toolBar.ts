@@ -25,10 +25,28 @@ function createToolBarRBContainer(mind: MindElixirInstance) {
   // toolBarRBContainer.appendChild(percentage)
   toolBarRBContainer.className = 'mind-elixir-toolbar rb'
   fc.onclick = () => {
-    mind.mindElixirBox.requestFullscreen()
+    if (document.fullscreenElement) {
+      document
+        .exitFullscreen()
+        .then(() => {
+          mind.rePosition()
+        })
+        .catch(err => {
+          console.error(`Error attempting to exit fullscreen: ${err.message}`)
+        })
+    } else {
+      mind.mindElixirBox
+        .requestFullscreen()
+        .then(() => {
+          mind.rePosition()
+        })
+        .catch(err => {
+          console.error(`Error attempting to enable fullscreen: ${err.message}`)
+        })
+    }
   }
   gc.onclick = () => {
-    mind.toCenter()
+    mind.rePosition()
   }
   zo.onclick = () => {
     if (mind.scaleVal < 0.6) return
