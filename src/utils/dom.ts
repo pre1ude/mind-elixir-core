@@ -93,7 +93,8 @@ export const createWrapper = function (this: MindElixirInstance, nodeObj: NodeOb
   const { p, tpc } = this.createParent(nodeObj)
   grp.appendChild(p)
   if (!omitChildren && nodeObj.children && nodeObj.children.length > 0) {
-    const expander = createExpander(nodeObj.expanded, nodeObj.children.length)
+    // get children count recursively
+    const expander = createExpander(nodeObj.expanded, getNodeCount(nodeObj))
     p.appendChild(expander)
     // tpc.expander = expander
     if (nodeObj.expanded !== false) {
@@ -102,6 +103,17 @@ export const createWrapper = function (this: MindElixirInstance, nodeObj: NodeOb
     }
   }
   return { grp, top: p, tpc }
+}
+
+function getNodeCount(node: NodeObj): number {
+  let count = 0
+  if (node.children && node.children.length > 0) {
+    count += node.children.length
+    for (const child of node.children) {
+      count += getNodeCount(child)
+    }
+  }
+  return count
 }
 
 export const createParent = function (this: MindElixirInstance, nodeObj: NodeObj) {
